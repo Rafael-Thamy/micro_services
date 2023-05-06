@@ -1,1 +1,10 @@
-something
+docker run --name auth-db -p 5432:5432 -e POSTGRES_DB=auth-db -e POSTGRES_USER=admin -e POSTGRES_PASSWORD=123456 postgres:11-alpine
+docker run --name product-db -p 5433:5432 -e POSTGRES_DB=product-db -e POSTGRES_USER=admin -e POSTGRES_PASSWORD=123456 postgres:11-alpine
+docker run --name sales-db -p 27017:27017 -p 28017:28017 -e MONGO_INITDB_DATABASE=sales  mongo"
+
+docker run -d --network NET1 --name sales-db -e MONGO_INITDB_ROOT_USERNAME=mongoadmin -e MONGO_INITDB_ROOT_PASSWORD=secret mongo
+
+
+docker run -d --network NET1 -h mongo --name mongo -e MONGO_INITDB_ROOT_USERNAME=mongoadmin -e MONGO_INITDB_ROOT_PASSWORD=secret -p 27017:27017 -v VOL1:/data/db mongo:latest
+
+544efc37884f481fec883e1def0355f2fb896efd1809b9002f082a9200d55973
